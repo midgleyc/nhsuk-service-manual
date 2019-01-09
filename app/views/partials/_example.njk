@@ -1,0 +1,16 @@
+{% macro example(params) %}
+
+<div class="example grey-background nhsuk-u-margin-bottom-4">
+  {{- getHTMLCode(params.path) | safe -}}
+
+  <pre data-module="app-copy"><code class="hljs html">
+    {{- getHTMLCode(params.path) | highlight('html') | safe -}}
+  </code></pre>
+
+  <pre data-module="app-copy"><code class="hljs js">
+    {{- getNunjucksCode(params.path) | highlight('js') | safe -}}
+  </code></pre>
+
+</div>
+
+{% endmacro %}

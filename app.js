@@ -5,6 +5,11 @@ const path = require('path');
 const express = require('express');
 const nunjucks = require('nunjucks');
 const chalk = require('chalk');
+const highlightjs = require('highlight.js');
+
+// Internal dependencies
+const getHTMLCode = require('./lib/get-html');
+const getNunjucksCode = require('./lib/get-nunjucks');
 
 // Set configuration variables
 const port = process.env.PORT || 3000;
@@ -33,11 +38,17 @@ var appViews = [
   path.join(__dirname, '/node_modules/nhsuk-frontend/packages')
 ]
 
-nunjucks.configure(appViews, {
+var env = nunjucks.configure(appViews, {
   autoescape: true,
   express: app,
   noCache: true,
-  watch: true
+  watch: true,
+})
+env.addGlobal('getHTMLCode', getHTMLCode)
+env.addGlobal('getNunjucksCode', getNunjucksCode)
+env.addFilter('highlight', (code, language) => {
+  const languages = language ? [language] : false
+  return highlightjs.highlightAuto(code.trim(), languages).value
 })
 
 // Automatically route pages
