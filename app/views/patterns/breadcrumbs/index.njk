@@ -1,5 +1,6 @@
 {% extends 'includes/layout.njk' %}
 
+{% from 'partials/_example.njk' import example %}
 {% from 'components/breadcrumb/macro.njk' import breadcrumb %}
 
 
@@ -30,7 +31,7 @@
               <p class="nhsuk-body-l">Breadcrumbs are a row of links at the top of the page which help users understand where they are in the website.</p>
               <p class="nhsuk-u-margin-bottom-8">They give users context and let them move back or up a level if they can't find what they want on the page.</p>
             </div>
-    </div> 
+    </div>
 
 
 
@@ -40,44 +41,18 @@
 
 
 
-										
-            <h2 >Code and design</h2>
 
+            <h2>Code and design</h2>
 
-
-            <div class="example grey-background nhsuk-u-margin-bottom-4">
-
-              {% from 'components/breadcrumb/macro.njk' import breadcrumb %}
-
-                {{ breadcrumb({
-                  items: [
-                    {
-                      href: "/level-one",
-                      text: "Level one"
-                    },
-                    {
-                      href: "/level-one/level-two",
-                      text: "Level two"
-                    }
-                  ],
-                  href: "/level-one/level-two/level-three",
-                  text: "Level three"
-                }) }}
-
-
-
-            </div>
-
-        
-
-
-            <p><a href="https://nhsuk.github.io/nhsuk-frontend/components/breadcrumb.html" rel="nofollow">Preview the breadcrumb component</a></p>
+            {{ example({
+              path: "app/views/patterns/breadcrumbs/example.njk"
+            }) }}
 
             <p>You can <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/breadcrumb">get the latest breadcrumb code</a> in the NHS.UK frontend library in GitHub.</p>
 
 
             <h2 class="nhsuk-u-margin-top-8">How to use breadcrumbs</h2>
-            
+
                 <p>If the full breadcrumb trail doesn't fit the screen size, it can wrap onto 2 lines, but don't break a breadcrumb if it doesn't fit the line.</p>
                 <p>You don't need to show the current page in the breadcrumb because this information is in the H1.</p>
                 <p>On mobile, we replace the full breadcrumb trail with a "Back to [parent]" link.</p>
@@ -91,7 +66,7 @@
 
 
             <h2>Research</h2>
-            
+
             <p>In testing, users noticed the yellow callouts and understood them as a warning.</p>
 
             <p>Research shows that clearly worded callout headings:</p>
@@ -106,12 +81,12 @@
                 <p >Discuss breadcrumbs on the <a href="https://nhsuk.slack.com/messages/standards">NHS.UK #standards Slack channel</a> or email the standards team at <a href="mailto:service-manual@nhs.net">service-manual@nhs.net</a>.</p>
 
 
-  
+
 {% from 'components/panel/macro.njk' import panel %}
 
 {{ panel({
   "label": "Similar patterns",
-  "HTML": "<ul>    
+  "HTML": "<ul>
                             <li><a href='/examples/manual/header'>Header</a></li>
                             <li><a href='#'>Footer</a></li>
                         </ul>"
@@ -134,14 +109,14 @@
                <li><a href="/patterns/icons">Icons</a></li>
                <li><a href="/patterns/inset-text">Inset text</a></li>
                <li><a href="/patterns/warning-callout">Warning callout</a></li>
-           </ul> 
+           </ul>
         </div>
 
 
     </div>
 
 
-  </div>      
+  </div>
 
 
   </main>
